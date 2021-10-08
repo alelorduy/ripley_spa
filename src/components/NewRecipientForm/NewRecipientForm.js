@@ -45,7 +45,7 @@ const NewRecipientForm = () => {
           description:
             'Al crear un Nuevo Destinatario, el monto máximo de la primera transferencia es de $300.000. Posteriormente, deberán transcurrir 24 horas para realizar una nueva transferencia sin esta restricción.',
           status: 'warning',
-          duration: null,
+          duration: 10000,
           isClosable: false,
           variant: 'top-accent',
         });
@@ -69,34 +69,38 @@ const NewRecipientForm = () => {
       width="100%"
       spacing={4}
     >
-      <Input placeholder="RUT" {...register('rut')} isInvalid={errors.rut} />
+      <Input placeholder="RUT*" {...register('rut')} isInvalid={errors.rut} />
       {errors.rut && <Text color="red.500">{errors.rut.message}</Text>}
       <Input
-        placeholder="Nombre"
+        placeholder="Nombre*"
         {...register('name')}
         isInvalid={errors.name}
       />
       {errors.name && <Text color="red.500">{errors.name.message}</Text>}
       <Input
-        placeholder="Correo"
+        placeholder="Correo*"
         {...register('email')}
         isInvalid={errors.email}
       />
       {errors.email && <Text color="red.500">{errors.email.message}</Text>}
       <Input
-        placeholder="Teléfono"
+        placeholder="Teléfono*"
         {...register('phone')}
         isInvalid={errors.phone}
       />
       {errors.phone && <Text color="red.500">{errors.phone.message}</Text>}
-      <Select placeholder="Banco" {...register('bank')} isInvalid={errors.bank}>
+      <Select
+        placeholder="Banco*"
+        {...register('bank')}
+        isInvalid={errors.bank}
+      >
         {banks.map(bank => (
           <option value={bank.name}>{bank.name}</option>
         ))}
       </Select>
       {errors.bank && <Text color="red.500">{errors.bank.message}</Text>}
       <Select
-        placeholder="Tipo de Cuenta"
+        placeholder="Tipo de Cuenta*"
         {...register('accountType')}
         isInvalid={errors.accountType}
       >
@@ -107,7 +111,7 @@ const NewRecipientForm = () => {
         <Text color="red.500">{errors.accountType.message}</Text>
       )}
       <Input
-        placeholder="Número de Cuenta"
+        placeholder="Número de Cuenta*"
         {...register('accountNumber')}
         isInvalid={errors.accountNumber}
       />
